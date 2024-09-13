@@ -61,16 +61,16 @@
 >dadaFs[[1]]
 
 #merging parired reads
-mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs, verbose=TRUE)
+> mergers <- mergePairs(dadaFs, derepFs, dadaRs, derepRs, verbose=TRUE)
 # Inspect the merger data.frame from the first sample
->head(mergers[[1]])
+> head(mergers[[1]])
 
 #constructing sequence table
->seqtab <- makeSequenceTable(mergers)
->dim(seqtab)
+> seqtab <- makeSequenceTable(mergers)
+> dim(seqtab)
 
 #examining the sequence table
-table(nchar(getSequences(seqtab)))
+>table(nchar(getSequences(seqtab)))
 
 #Removing Chimeras
 >seqtab.nochim <- removeBimeraDenovo(seqtab, method="consensus", multithread=TRUE, verbose=TRUE)
@@ -84,7 +84,7 @@ head(track)
 
 #Assigning taxonomy using the SILVA database
 >taxa <- assignTaxonomy(seqtab.nochim, "/Users/rthekkoot/Downloads/real-seq/silva_nr_v128_train_set.fa.gz", multithread=TRUE)
-#download database from SILVA site and place in path folder, to note: the database needs to be downloaded from dada2 website
+#download database from SILVA site and place in path folder, to note: the database needs to be downloaded from dada2 website or it needs to be formatted
 
 > taxa.print <- taxa
 > rownames(taxa.print) <- NULL
@@ -130,7 +130,7 @@ taxa.species = tax_table(taxa.species)
 >library(DECIPHER)
 > seqs <- getSequences(sequence_table)
 > names(seqs) <- seqs
-> alignment <- AlignSeqs(DNAStringSet(seqs), anchor=NA)
+> alignment <- AlignSeqs(DNAStringSet(seqs), anchor=NA))
 
 ##Making phylogenetic tree with Fasttree, first download fasttree and place into directory
 
